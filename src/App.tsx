@@ -11,6 +11,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const normalizedSearch = search.trim().toLowerCase();
   const filteredUsers = users.filter((user) =>
@@ -45,7 +46,7 @@ function App() {
   }
   return (
     <main>
-      <h1>Hello Monika</h1> <h1>Hello Monika</h1>
+      <h1>Hello Monika</h1>
       <p>I am preparing for frontend interviews.</p>
       <p> Count: {count}</p>
       <CounterButton label="-" onClick={() => handleCounters("-")} />
@@ -65,9 +66,17 @@ function App() {
       ) : (
         <ul>
           {filteredUsers.map((user) => (
-            <UserCard key={user.id} user={user} />
+            <UserCard key={user.id} user={user} onSelect={setSelectedUser} />
           ))}
         </ul>
+      )}
+      {selectedUser && (
+        <div>
+          <h2>{selectedUser.name}</h2>
+          <p>Email: {selectedUser.email}</p>
+          <p>Phone: {selectedUser.phone}</p>
+          <p>Website: {selectedUser.website}</p>
+        </div>
       )}
     </main>
   );
