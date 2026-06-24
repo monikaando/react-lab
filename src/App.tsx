@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import CounterButton from "./CounterButton";
+import UserCard from "./UserCard";
 import "./App.css";
+import type { User } from "./types/User";
 
-type User = {
-  id: number;
-  name: string;
-};
 function App() {
   const [count, setCount] = useState(0);
   const [clicks, setClicks] = useState(0);
@@ -67,7 +65,7 @@ function App() {
       ) : (
         <ul>
           {filteredUsers.map((user) => (
-            <li key={user.id}>{user.name}</li>
+            <UserCard key={user.id} user={user} />
           ))}
         </ul>
       )}
