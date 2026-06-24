@@ -45,7 +45,7 @@ function App() {
   }
   return (
     <main>
-      <h1>Hello Monika</h1>
+      <h1>Hello Monika</h1> <h1>Hello Monika</h1>
       <p>I am preparing for frontend interviews.</p>
       <p> Count: {count}</p>
       <CounterButton label="-" onClick={() => handleCounters("-")} />
